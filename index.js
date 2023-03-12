@@ -1,12 +1,18 @@
-import express from express;
+const express = require('express');
 
 const app = express();
+const port = 3000;
+const visaRoutes = require('./src/visa/routes');
+
+app.use(express.json())
 
 app.get('/', (req, res) => {
   console.log('Received a get request on the path /');
   res.send('Hello World!')
 });
 
-app.listen(8000, () => {
-  console.log('示例程序正在监听 8000 端口！')
+app.use("/api/v1/visa", visaRoutes);
+
+app.listen(port, () => {
+  console.log(`app listening on port ${port}`)
 });
