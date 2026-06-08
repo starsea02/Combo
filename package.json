@@ -6,6 +6,7 @@
   "type": "commonjs",
   "scripts": {
     "build": "tsc",
+    "rename:files": "npm run build && node dist/rename-files.js",
     "start": "node dist/index.js"
   },
   "author": "",
