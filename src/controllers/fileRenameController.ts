@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import { renameFilesInDirectory } from '../services/fileRenameService';
 
-const defaultDirectory = 'D:\\BaiduNetdiskDownload\\movie\\班班和莉莉的小王国\\第1季';
+const defaultDirectory = 'D:\\BaiduNetdiskDownload\\movie\\布鲁伊\\第一季';
 
 export async function triggerFileRename(req: Request, res: Response) {
   const directoryPath =

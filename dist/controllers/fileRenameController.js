@@ -11,7 +11,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.triggerFileRename = void 0;
 const fileRenameService_1 = require("../services/fileRenameService");
-const defaultDirectory = 'D:\\BaiduNetdiskDownload\\movie\\班班和莉莉的小王国\\第1季';
+const defaultDirectory = 'D:\\BaiduNetdiskDownload\\movie\\布鲁伊\\第一季';
 function triggerFileRename(req, res) {
     var _a;
     return __awaiter(this, void 0, void 0, function* () {

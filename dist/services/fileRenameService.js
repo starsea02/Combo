@@ -15,20 +15,20 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.renameFilesInDirectory = void 0;
 const fs_1 = require("fs");
 const path_1 = __importDefault(require("path"));
-function getNumericPrefix(fileName) {
-    const match = fileName.match(/^(\d+)/);
+function getEpisodeNumber(fileName) {
+    const match = fileName.match(/^(\d+)\..+/);
     if (!match) {
         return null;
     }
     return match[1];
 }
 function buildNewFileName(originalName) {
-    const baseName = path_1.default.parse(originalName).name;
-    const prefix = getNumericPrefix(baseName);
-    if (!prefix) {
+    const parsedName = path_1.default.parse(originalName);
+    const episodeNumber = getEpisodeNumber(parsedName.name);
+    if (!episodeNumber) {
         return null;
     }
-    return prefix;
+    return `${episodeNumber}${parsedName.ext}`;
 }
 function renameFilesInDirectory(directoryPath) {
     return __awaiter(this, void 0, void 0, function* () {

@@ -6,8 +6,8 @@ export interface RenameResult {
   newName: string;
 }
 
-function getNumericPrefix(fileName: string): string | null {
-  const match = fileName.match(/^(\d+)/);
+function getEpisodeNumber(fileName: string): string | null {
+  const match = fileName.match(/^(\d+)\..+/);
 
   if (!match) {
     return null;
@@ -17,14 +17,14 @@ function getNumericPrefix(fileName: string): string | null {
 }
 
 function buildNewFileName(originalName: string): string | null {
-  const baseName = path.parse(originalName).name;
-  const prefix = getNumericPrefix(baseName);
+  const parsedName = path.parse(originalName);
+  const episodeNumber = getEpisodeNumber(parsedName.name);
 
-  if (!prefix) {
+  if (!episodeNumber) {
     return null;
   }
 
-  return prefix;
+  return `${episodeNumber}${parsedName.ext}`;
 }
 
 export async function renameFilesInDirectory(directoryPath: string): Promise<RenameResult[]> {
